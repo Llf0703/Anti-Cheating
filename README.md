@@ -17,10 +17,10 @@
 sudo apt-get install similarity-tester
 ```
 
-项目依赖``requirements.txt``，在终端执行以下代码：
+项目依赖``PyYAML``，在终端执行以下代码：
 
 ```
-sudo pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
+sudo pip install pyyaml
 ```
 
 ### 设置
