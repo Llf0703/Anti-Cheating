@@ -12,7 +12,7 @@ def get_html(url):
     opener.addheaders = [headers]
     page = opener.open(url)
     html = page.read()
-    html = html.decode('utf-8')
+    html = html.decode("utf8","ignore")
     return html
 
 def get_yaml():
@@ -20,21 +20,24 @@ def get_yaml():
     config = yaml.load(f.read())
     return config
 
+config = get_yaml()
+
 page_cnt = 0
 
-kw=quote(input("请输入搜索关键字："))
+kw=quote(config['keyword'])
+
+print('搜索关键字：'+config['keyword']+'\n搜索页数：'+str(config['baidu_pages'])+'\n输出大于'+str(config['sim_limit'])+'%的结果\n---------------\n')
 
 baidu_url = 'https://www.baidu.com/s?wd='+kw
 
 cnt=0
-
-config = get_yaml()
 
 result=open('result.txt','w')
 
 while page_cnt<config['baidu_pages']:
     reglist=[]
     page_cnt=page_cnt+1
+    print('正在搜索第 '+str(page_cnt)+' 页')
     html = get_html(baidu_url)
     reg = r'<div class=\"f13\"><a target=\"_blank\" href=\"(.+?)\" class=\"c-showurl\" style=\"text-decoration:none;\">'
     c_reg = re.compile(reg)
@@ -77,3 +80,5 @@ while page_cnt<config['baidu_pages']:
     baidu_url='https://www.baidu.com/s?wd='+kw+'&pn='+str(page_cnt)+'0'
 
 result.close()
+
+print('完成！请打开result.txt查看结果。')
