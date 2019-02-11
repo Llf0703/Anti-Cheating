@@ -7,7 +7,7 @@
 
 ### 准备
 
-**暂时只支持C++语言**
+**暂时只支持C和C++语言**
 
 目前只在64位的``Ubuntu18.10``,``Ubuntu16.04LTS``,``Ubuntu18.04LTS``,``Windows10``下``Python3.x``环境测试，理论上支持所有现代系统。
 
@@ -15,6 +15,12 @@
 
 ```
 sudo apt-get install similarity-tester
+```
+
+项目依赖``requirements.txt``，在终端执行以下代码：
+
+```
+sudo pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
 ```
 
 ### 设置
@@ -30,6 +36,9 @@ baidu_pages: 3
 
 # 相似度阀值，即相似度超过这个百分比就会输出到result.txt中
 sim_limit: 10
+
+# 浏览器useragent，若没有特殊情况可以保持默认
+user_agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:66.0) Gecko/20100101 Firefox/66.0
 ```
 
 按照提示修改设置项后保存即可。
@@ -58,9 +67,11 @@ http://www.baidu.com/link?url=xxxxx
 
 ## TODO
 
-- [ ] 按相似度排序
 - [x] 人性化的设置界面
-- [ ] 更多语言支持
+- [ ] 更多搜索引擎(Bing,Google)的支持
+- [ ] 按相似度排序
+- [ ] (Duanyll大佬建议) 命令行传参支持
+- [ ] 对Pascal语言的支持
 
 ## LICENSE
 
