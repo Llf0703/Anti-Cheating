@@ -27,7 +27,6 @@ def baidu(config):
 
         for i in reglist:
             url=i
-            print(url)
             html=get_html(url)
             line_id=re.compile(r'<span style=\"color: #008080\">(.+?)</span>',re.S) #cnblogs行号
             html=line_id.sub('',html)

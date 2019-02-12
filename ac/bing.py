@@ -16,7 +16,6 @@ def bing(config):
 
     while page_cnt<config['pages']:
         reglist = []
-        print(bing_url)
         page_cnt=page_cnt+1
         print('正在搜索第 '+str(page_cnt)+' 页')
         html = get_html(bing_url)
@@ -29,7 +28,6 @@ def bing(config):
 
         for i in reglist:
             url=i
-            print(url)
             html=get_html(url)
             line_id=re.compile(r'<span style=\"color: #008080\">(.+?)</span>',re.S) #cnblogs行号
             html=line_id.sub('',html)

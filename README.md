@@ -31,7 +31,7 @@ sudo pip install pyyaml
 
 ```yaml
 # 搜索关键字，建议粘贴题目中的一段文字或准确题号
-keyword: mayan+puzzle是最近流行起来的一个游戏。游戏界面是一个7+行×5
+keyword: Mayan puzzle是最近流行起来的一个游戏。游戏界面是一个7行×5
 
 # 搜索页数，越多越精确，但耗时更多
 pages: 3
