@@ -9,3 +9,6 @@ sim_limit: 10
 
 # 浏览器useragent，若没有特殊情况可以保持默认
 user_agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:66.0) Gecko/20100101 Firefox/66.0
+
+# 使用搜索引擎设置，百度为baidu，必应为bing，谷歌为google
+site: baidu
