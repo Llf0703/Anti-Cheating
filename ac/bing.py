@@ -3,23 +3,25 @@ import re
 import os
 from ac.pre import get_html
 
-def baidu(config):
+def bing(config):
     page_cnt = 0
 
     kw=quote(config['keyword'])
 
-    baidu_url = 'https://www.baidu.com/s?wd='+kw
+    bing_url = 'https://cn.bing.com/search?q='+kw+'&go=%e6%90%9c%e7%b4%a2&qs=ds&FORM=PORE'
 
     cnt=0
 
     result=open('result.txt','w')
 
     while page_cnt<config['pages']:
-        reglist=[]
+        reglist = []
+        print(bing_url)
         page_cnt=page_cnt+1
         print('正在搜索第 '+str(page_cnt)+' 页')
-        html = get_html(baidu_url)
-        reg = r'<div class=\"f13\"><a target=\"_blank\" href=\"(.+?)\" class=\"c-showurl\" style=\"text-decoration:none;\">'
+        html = get_html(bing_url)
+        result.write(html)
+        reg = r'<h2><a target=\"_blank\" href=\"(.+?)\"'
         c_reg = re.compile(reg)
         reglist += c_reg.findall(html)
 
@@ -58,7 +60,7 @@ def baidu(config):
                 if ans>=config['sim_limit']:
                     result.write(url+'\n相似度：'+str(ans)+'%'+'\n\n')
                     
-        baidu_url='https://www.baidu.com/s?wd='+kw+'&pn='+str(page_cnt)+'0'
+        bing_url='https://cn.bing.com/search?q='+kw+'&go=%e6%90%9c%e7%b4%a2&qs=ds&first='+str(page_cnt)+'1&FORM=PORE'
 
     result.close()
 
