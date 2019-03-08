@@ -9,13 +9,15 @@ config = get_yaml()
 def download_baidu():
 
     word_cnt=0;
-    os.makedirs('data')
+    if not os.path.exists('data'):
+        os.makedirs('data')
 
     for word in config['keywords']:
 
         page_cnt = 0
         word_cnt = word_cnt + 1
-        os.makedirs('data/'+str(word_cnt))
+        if not os.path.exists('data/'+str(word_cnt)):
+            os.makedirs('data/'+str(word_cnt))
         kw=quote(word)
         baidu_url = 'https://www.baidu.com/s?wd='+kw
         cnt=0
