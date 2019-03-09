@@ -1,6 +1,7 @@
-from ac.pre import get_yaml
-from ac.download import download_baidu
+from ac.download import download
+from ac.user import user
+from ac.compare import compare
 
-config = get_yaml()
-
-download_baidu()
+download()
+user()
+compare()

@@ -1,3 +1,7 @@
+# 下载百度搜索代码
+
+# finished
+
 from ac.pre import get_yaml
 from ac.pre import get_html
 from urllib.request import quote
@@ -6,9 +10,9 @@ import os
 
 config = get_yaml()
 
-def download_baidu():
+def download():
 
-    word_cnt=0;
+    word_cnt=-1;
     if not os.path.exists('data'):
         os.makedirs('data')
 
@@ -16,8 +20,8 @@ def download_baidu():
 
         page_cnt = 0
         word_cnt = word_cnt + 1
-        if not os.path.exists('data/'+str(word_cnt)):
-            os.makedirs('data/'+str(word_cnt))
+        if not os.path.exists('data/'+str(config['problems'][word_cnt])):
+            os.makedirs('data/'+str(config['problems'][word_cnt]))
         kw=quote(word)
         baidu_url = 'https://www.baidu.com/s?wd='+kw
         cnt=0
@@ -44,7 +48,7 @@ def download_baidu():
                 c_code=re.compile(code)
                 codelist=c_code.findall(html)
                 cnt=cnt+1
-                file=open('data/'+str(word_cnt)+'/'+str(cnt)+'.cpp','w')
+                file=open('data/'+str(config['problems'][word_cnt])+'/'+str(cnt)+'.cpp','w')
                 for j in codelist:
                     pattern = re.compile(r'<[^>]+>', re.S)
                     j = pattern.sub('', j)
