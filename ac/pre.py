@@ -1,5 +1,4 @@
 import urllib.request
-import dryscrape
 import yaml
 
 def get_yaml():
@@ -15,9 +14,3 @@ def get_html(url):
     html = page.read()
     html = html.decode("utf8","ignore")
     return html
-
-def get_html_withjs(url):
-    session_req=dryscrape.Session()
-    session_req.visit(url)
-    response=session_req.body()
-    return response
