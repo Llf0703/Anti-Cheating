@@ -17,7 +17,7 @@ options.add_argument("--headless")
 driver = webdriver.Firefox(firefox_options=options)
 
 
-def user():
+def user_uoj():
     print('\n正在从OJ获取选手提交代码...\n----------------------------------------')
 
     overview_url = contest_url+'/standings'
@@ -40,7 +40,8 @@ def user():
             '<span class=\"uoj-username\" data-rating=\"([0-9]{1,})\">(.+?)</span>', sub).group(2)
         problem_id = re.search(
             '<a href=\"/contest/(.+?)\">#([0-9]{1,})\.(.+?)</a>', sub).group(2)
-        code = re.search('<code class=\"(.+?)\">([\s\S]*?)</code>', sub).group(2)
+        code = re.search(
+            '<code class=\"(.+?)\">([\s\S]*?)</code>', sub).group(2)
         code = code.replace("&lt;", "<")
         code = code.replace("&gt;", ">")
         code = code.replace("&amp;", "&")
@@ -52,4 +53,9 @@ def user():
         file.write(code)
         file.close()
 
+    return
+
+
+def user():
+    user_uoj()
     return

@@ -1,3 +1,10 @@
+# Python
+*.log
+*.py[cod]
+__pycache__
+
+# VSCode
+.vscode
+
+# AC
 result.txt
-/data
-/user

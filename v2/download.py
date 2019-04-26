@@ -9,7 +9,7 @@ from urllib.request import quote
 config = get_yaml()
 
 
-def download():
+def download_baidu():
 
     print('\n正在从搜索引擎获取比对代码...\n----------------------------------------')
 
@@ -45,26 +45,31 @@ def download():
                 html = get_html(url)
                 print(url)
                 line_id = re.compile(
-                    r'<span style=\"color: #008080\">(.+?)</span>', re.S)  # cnblogs行号
+                    r'<span style=\"color: #008080;\">(.+?)</span> ', re.S)  # cnblogs行号
                 html = line_id.sub('', html)
-                code = r'#include([\s\S]*?)</pre>'
-                c_code = re.compile(code)
-                codelist = c_code.findall(html)
+                code = re.search('#include([\s\S]*?)</pre>', html)
+                if code == None:
+                    continue
+                code = code.group(1)
                 cnt = cnt+1
                 file = open(
                     'data/'+str(config['problems'][word_cnt])+'/'+str(cnt)+'.cpp', 'w')
-                for j in codelist:
-                    pattern = re.compile(r'<[^>]+>', re.S)
-                    j = pattern.sub('', j)
-                    j = '#include'+j
-                    j = j.replace("&lt;", "<")
-                    j = j.replace("&gt;", ">")
-                    j = j.replace("&amp;", "&")
-                    j = j.replace("&quot;", '"')
-                    file.write(j)
+                pattern = re.compile(r'<[^>]+>', re.S)
+                code = pattern.sub('', code)
+                code = '#include'+code
+                code = code.replace("&lt;", "<")
+                code = code.replace("&gt;", ">")
+                code = code.replace("&amp;", "&")
+                code = code.replace("&quot;", '"')
+                file.write('//url:'+url+':end\n'+code)
                 file.close()
 
             baidu_url = 'https://www.baidu.com/s?wd=' + \
                 kw+'&pn='+str(page_cnt)+'0'
 
+    return
+
+
+def download():
+    download_baidu()
     return

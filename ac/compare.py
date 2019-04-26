@@ -39,8 +39,11 @@ def compare():
                 for l in range(0, len(data_code_list)):
                     data_code_dir = os.path.join(
                         data_problem_dir, data_code_list[l])
-                    data_name = os.path.basename(data_code_dir)
-                    #data_name = cpp.sub('', data_name)
+
+                    f = open(data_code_dir)
+                    code = f.read()
+                    f.close()
+                    data_name = re.search('url:(.+?):end', code).group(1)
 
                     os.system('sim_c++ -p -o re.txt ' +
                               user_code_dir+' '+data_code_dir)
