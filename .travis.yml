@@ -1,0 +1,18 @@
+sudo: false
+dist: xenial
+language: python
+python:
+  - "3.7"
+git:
+  depth: 1
+before_install:
+  - sudo wget ftp.us.debian.org/debian/pool/main/s/similarity-tester/similarity-tester_3.0.2-1_amd64.deb
+  - sudo dpkg -i similarity-tester_3.0.2-1_amd64.deb
+  - sudo apt-get install firefox
+  - sudo wget https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz
+  - tar -zxvf geckodriver-v0.24.0-linux64.tar.gz
+  - sudo mv ./geckodriver /usr/local/bin/
+  - sudo chmod a+x /usr/local/bin/geckodriver
+install:
+  - pip install -r requirements.txt
+script: python3 main.py

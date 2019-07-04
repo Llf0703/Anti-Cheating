@@ -1,7 +1,7 @@
 # 全局设置
 
 # 使用模式，可选 1 或 2 ，功能请见 README.md
-mode: 1
+mode: 2
 
 # UserAgent，改不改无所谓
 ua: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:66.0) Gecko/20100101 Firefox/66.0
