@@ -1,4 +1,4 @@
-# Anti-Cheating OI全网反作弊系统
+# Anti-Cheating OI全网反作弊系统 [![Build Status](https://travis-ci.org/Llf0703/Anti-Cheating.svg?branch=master)](https://travis-ci.org/Llf0703/Anti-Cheating)
 
 ![](https://img.shields.io/badge/python-3.x-blue.svg?style=flat-square) ![](https://img.shields.io/badge/ubuntu->=16.04-orange.svg?style=flat-square)
 ![](https://img.shields.io/badge/LICENSE-MIT-green.svg?style=flat-square)
